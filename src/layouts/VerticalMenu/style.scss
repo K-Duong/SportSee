@@ -1,0 +1,29 @@
+@use "../../styles/index.scss" as *;
+
+aside {
+  @include flex-column;
+  align-items: center;
+  
+  background-color: $border-color;
+  height: 100vh;
+  width: 10%;
+  // padding-bottom:$s-15;
+
+  div{
+    @include flex-column;
+    flex-grow: 1;
+    justify-content: center;
+    img{
+      padding: $s-20;
+    }
+    
+    }
+
+  .copyright{
+    color: $white-color;
+    writing-mode: tb;
+    transform: rotate(180deg);
+    
+    
+  }
+}

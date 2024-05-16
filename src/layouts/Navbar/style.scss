@@ -1,0 +1,30 @@
+@use "../../styles/index.scss" as *;
+
+nav{
+  @include flex-row;
+  background-color: $border-color;
+  align-items: center;
+  padding:  $s-20;
+  
+
+  img {
+    width: 178px;
+    height: 61px;
+  }
+
+
+  ul {
+    margin-left: $s-35;
+    flex-grow: 1;
+    @include flex-row;
+    justify-content: space-between;
+
+    a{
+    text-decoration: none;
+    color: $white-color;
+    font-size: $menu-text;
+    font-weight: $medium-text;
+
+    } 
+  }
+}
