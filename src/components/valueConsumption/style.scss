@@ -1,0 +1,25 @@
+@use "../../styles/index.scss" as *;
+.value{
+  @include flex-row;
+  align-items: center;
+  padding: $s-25;
+  column-gap: $s-25;
+  background-color: $bg-color;;
+
+  &-icon {
+    img {
+      width :60px;
+      height:60px;
+    }
+  }
+
+  &-details {
+    .number {
+      font-weight: $bold-text;
+      font-size: $value-per-unit;
+    }
+    .type {
+      font-size: $value-type;
+    }
+  }
+}

@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import * as data from "../../../data/data.js";
 
-import VerticalMenu from "../../VerticalMenu/VerticalMenu.jsx";
+import Container from "../../container/Container.jsx";
+
 import Value from "../../../components/valueConsumption/ValueConsumption.jsx";
 
-
 import "./style.scss";
+import UserContext from "../../../store/UserContext.jsx";
 
 function Dashboard() {
   const { id } = useParams();
@@ -15,26 +16,27 @@ function Dashboard() {
   console.log(Object.entries(user.keyData));
 
   return (
-    <div className="dashboard">
-      <VerticalMenu />
-      <div className="container">
-        <header>
-        <h1>
-          Bonjour <span className="user-name">{user.userInfos.firstName}</span>{" "}
-        </h1>
-        <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      </header>
-      <div className="main-content">
-        <div className="charts"></div>
-        <div className="value-consumption">
-          {/* map component */}
-          {Object.entries(user.keyData).map(arr=><Value key={arr[0]} arr={arr}/>)}
-          
-        </div>
-      </div>
-      </div>
+    <UserContext.Provider value={foundedId}>
       
-    </div>
+          <div className="dashboard-container">
+            <header className="dashboard-header">
+              <h1>
+                Bonjour{" "}
+                <span className="user-name">{user.userInfos.firstName}</span>{" "}
+              </h1>
+              <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            </header>
+            <div className="dashboard-content">
+              <div className="charts"></div>
+              <div className="values-consumption">
+                {Object.entries(user.keyData).map((arr) => (
+                  <Value key={arr[0]} arr={arr} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+    </UserContext.Provider>
   );
 }
 export default Dashboard;

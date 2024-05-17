@@ -1,0 +1,17 @@
+@use "../../styles/index.scss" as *;
+
+
+#root {
+  height: 100%;
+
+  .container {
+  height: 100%;
+  
+  .body-container {
+  @include flex-row;
+  height: 100%;
+    
+    .main-container{
+      width: 100%;
+    }
+}}}

@@ -1,8 +1,6 @@
 import { createBrowserRouter, Outlet, Navigate } from "react-router-dom";
 
-import Nav from "../layouts/Navbar/Navbar";
-import VerticalMenu from "../layouts/VerticalMenu/VerticalMenu";
-
+import Container from "../layouts/container/Container";
 import Dashboard from "../layouts/pages/dashboard/Dashboard";
 
 import "./style.scss"
@@ -27,7 +25,7 @@ export const router = createBrowserRouter([
           {
             // to create dynamic path id
             path: ":id",
-            element: <Dashboard />,
+            element: <Dashboard/>,
             // récupérer les infos générales sur l'utilisateur + les infos sur la complétion et l'objectif journalier
 
             children: [
@@ -59,11 +57,8 @@ export const router = createBrowserRouter([
 
 function Root() {
   return (
-    <>
-      <Nav />
-      <div className="container">
-        <Outlet />
-      </div>
-    </>
+      <Container>
+        <Outlet/>
+      </Container>
   );
 }
