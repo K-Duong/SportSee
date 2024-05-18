@@ -1,11 +1,12 @@
-import Nav from "../Navbar/Navbar";
-import VerticalMenu from "../VerticalMenu/VerticalMenu";
 
+
+import Nav from "../navbar/Navbar";
+import VerticalMenu from "../verticalMenu/VerticalMenu";
 import "./style.scss"
 
 function Container({children}) {
   return (<div className="container">
-    <Nav />
+  <Nav/>
     <div className="body-container">
       <VerticalMenu/>
       <div className="main-container">

@@ -1,0 +1,30 @@
+@use "../../styles/index.scss" as *;
+
+.recharts-responsive-container {
+  position: relative;
+  background-color: $bg-color;
+  padding: $s-25;
+  border-radius: $round-border-chart;
+
+  .barchart-label {
+    font-size: $label-chart;
+    font-weight: $medium-text;
+    color: $label-color;
+    position: absolute;
+    top: 32px;
+  }
+
+  .custom-tooltip {
+    @include flex-column;
+    align-items: center;
+    background-color: $red-bar;
+    color: $white-color;
+    padding: $s-10;
+    font-size: $tooltip-text;
+  }
+}
+
+.legend-text {
+  font-size: $label-chart;
+  color: $text-color;
+}
