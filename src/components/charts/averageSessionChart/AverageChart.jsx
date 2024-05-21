@@ -91,6 +91,7 @@ function AverageChart() {
         padding={{ left: 10, right: 10 }}
         axisLine={false}
         allowDataOverflow
+        tickLine={false}
         tick={<CustomizedTick />}
       >
         <Label content={<CustomizedLabel />} />
