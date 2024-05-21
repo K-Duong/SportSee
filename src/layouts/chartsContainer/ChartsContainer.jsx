@@ -1,5 +1,6 @@
-import ActivityChart from "../../components/activitiesChart/ActivitiesChart";
-import ScoreChart from "../../components/scoreChart/ScoreChart";
+import ActivityChart from "../../components/charts/activitiesChart/ActivitiesChart";
+import AverageChart from "../../components/charts/averageSessionChart/AverageChart";
+import ScoreChart from "../../components/charts/scoreChart/ScoreChart";
 
 import "./style.scss";
 
@@ -8,7 +9,7 @@ function ChartsContainer () {
   <div className="charts">
     <ActivityChart/>
     <div className="mini-charts">
-      <ScoreChart/>
+      <AverageChart/>
       <ScoreChart/>
       <ScoreChart/>
     </div>

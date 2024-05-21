@@ -10,7 +10,7 @@ import {
 } from "recharts";
 
 import { useContext } from "react";
-import UserContext from "../../store/UserContext";
+import UserContext from "../../../store/UserContext";
 
 import "./style.scss";
 
@@ -61,7 +61,7 @@ function ActivitiesChart() {
         barCategoryGap={40}
         barGap={8}
       >
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid vertical={false} strokeDasharray="3 3" />
         <XAxis dataKey="day" />
         <YAxis orientation="right" />
         <Tooltip content={<CustomTooltip />} />

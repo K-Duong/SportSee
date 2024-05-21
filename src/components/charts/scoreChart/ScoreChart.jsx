@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UserContext from "../../store/UserContext";
+import UserContext from "../../../store/UserContext";
 
 import "./style.scss";
 import { PieChart, ResponsiveContainer, Pie, Cell, Label } from "recharts";
