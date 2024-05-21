@@ -1,0 +1,27 @@
+@use "../../styles/index.scss" as *;
+
+.label-wrapper {
+  .score-label {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+
+    .score-value {
+      color: $secondary-color;
+      font-weight: $bold-text;
+      font-size: $label-score-chart;
+    }
+    .score-text {
+      text-align: center;
+      font-weight: $bold-text;
+      color: $text-color;
+    }
+  }
+}
+.score-chart-title{
+  .title {
+    font-size: $label-chart;
+    color: $label-color;
+    font-weight: $bold-text;
+  }
+}

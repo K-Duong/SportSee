@@ -30,7 +30,7 @@ function ActivitiesChart() {
       day: getDay(a.day),
     };
   });
-  console.log(activitiesData);
+  // console.log(activitiesData);
 
   //customize tooltip:
   const CustomTooltip = ({payload}) => {
