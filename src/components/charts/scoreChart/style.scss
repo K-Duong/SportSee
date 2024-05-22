@@ -1,5 +1,11 @@
 @use "../../../styles/index.scss" as *;
 
+.recharts-wrapper.score-chart {
+  background-color: $bg-color;
+  border-radius: $round-border-chart;
+  padding: $s-15;
+}
+
 .label-wrapper {
   .score-label {
     @include flex-column;
@@ -24,4 +30,17 @@
     color: $label-color;
     font-weight: $bold-text;
   }
+}
+
+.cell-empty{
+  fill: $bg-color;
+  
+}
+.cell-filled {
+  fill : $primary-color;
+  
+
+}
+.inner-circle{
+  fill: $white-color;
 }

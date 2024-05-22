@@ -1,5 +1,5 @@
 @use "../../../styles/index.scss" as *;
-.recharts-wrapper {
+.recharts-wrapper.average-chart {
   border-radius: $round-border-chart;
   padding: $s-15;
 }

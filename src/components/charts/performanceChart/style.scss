@@ -1,0 +1,11 @@
+@use "../../../styles/index.scss" as *;
+
+.recharts-wrapper.performance-chart {
+  background-color: $secondary-color;
+  border-radius: $round-border-chart;
+  padding: $s-15;
+}
+.performance-label{
+  fill: $white-color;
+  font-size: 12px;
+}

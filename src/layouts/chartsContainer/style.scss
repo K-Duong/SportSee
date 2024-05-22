@@ -2,6 +2,8 @@
 
 .charts{
   width: 72%;
+  @include flex-column;
+  row-gap: $s-25;
 }
 .mini-charts{
   @include flex-row;

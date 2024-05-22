@@ -23,7 +23,7 @@ function AverageChart() {
     ...obj,
     day: convertDay(obj.day),
   }));
-  console.log("new data: ", data);
+  // console.log("new data: ", data);
 
   function CustomizedTick(props) {
     // console.log(props);
@@ -52,7 +52,7 @@ function AverageChart() {
   }
 
   function CustomizedActiveDot(props) {
-    console.log(props);
+    // console.log(props);
     return (
       <svg>
         <circle
@@ -79,6 +79,7 @@ function AverageChart() {
   return (
     // <ResponsiveContainer  width={250} height={250}>
     <LineChart
+      className="average-chart"
       width={250}
       height={250}
       data={data}

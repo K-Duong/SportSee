@@ -16,10 +16,10 @@ function ScoreChart() {
     { name: "Score", value: score },
   ];
 
-  function ChartName(props) {
+  function ChartLabel(props) {
     return (
-      <foreignObject width={95} height={95}  x={props.viewBox.cx - 85}
-      y={props.viewBox.cy - 105} className="score-chart-title">
+      <foreignObject width={95} height={95}   
+      className="score-chart-title">
         <span className="title">Score</span>
       </foreignObject>
     );
@@ -45,8 +45,7 @@ function ScoreChart() {
   return (
     // <ResponsiveContainer >
     <PieChart width={250} height={250} 
-      style={{ backgroundColor: "#FBFBFB" }}
-      
+    className="score-chart"
       >
       <Pie
         data={data}
@@ -54,17 +53,31 @@ function ScoreChart() {
         cy="50%"
         dataKey="value"
         nameKey="score"
-        innerRadius={65}
-        outerRadius={80}
+        innerRadius={80}
+        outerRadius={100}
         startAngle={-270}
+        cornerRadius={100}
       >
         {data.map((entry, index) => {
-          if (index === 0) return <Cell key={`cell-${index}`} fill="#f3f6f9" />;
-          return <Cell key={`cell-${index}`} fill="#E60000" />;
+          if (index === 0) return <Cell className="cell-empty" key={`cell-${index}`} />;
+          return <Cell className="cell-filled" key={`cell-${index}`} />;
         })}
-        <Label content={<CustomizedLabel />} />
-        <Label content={<ChartName />} />
+        <Label content={<ChartLabel />} />
       </Pie>
+      <Pie
+        data={data}
+        dataKey="value"
+        innerRadius={0}
+        outerRadius={80}
+        isAnimationActive={false}
+      >
+        {data.map((entry,index) => {
+          return <Cell className="inner-circle" key={`cell-${index}`} />
+        })} 
+        <Label content={<CustomizedLabel />} />
+
+        </Pie>
+
     </PieChart>
     // </ResponsiveContainer>
   );
