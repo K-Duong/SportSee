@@ -1,17 +1,23 @@
 @use "../../../styles/index.scss" as *;
 
-.recharts-responsive-container {
+.recharts-responsive-container.activities-chart-container {
   position: relative;
   background-color: $bg-color;
-  padding: $s-25;
+  width: 100%;
+  height: 50%;
   border-radius: $round-border-chart;
 
-  .barchart-label {
+  .activities-chart-label {
     font-size: $label-chart;
     font-weight: $medium-text;
     color: $label-color;
     position: absolute;
     top: 32px;
+    padding-left: 10px
+  }
+
+  .activities-barchart{
+    padding-left: $s-10;
   }
 
   .custom-tooltip {

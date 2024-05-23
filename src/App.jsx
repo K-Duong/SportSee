@@ -1,7 +1,11 @@
-import { RouterProvider } from 'react-router-dom' 
-import { router } from './router/Router'
+import Container from "./layouts/container/Container";
+import Dashboard from "./layouts/pages/dashboard/Dashboard";
 
 function App() {
-  return <RouterProvider router={router}/>
-  }
-export default App
+  return (
+    <Container>
+      <Dashboard />
+    </Container>
+  );
+}
+export default App;

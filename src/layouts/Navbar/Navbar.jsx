@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
 import "./style.scss";
@@ -7,10 +6,10 @@ function Nav() {
     <nav>
       <img src={logo}/>
       <ul>
-        <NavLink to="/">Accueil</NavLink>  
-        <NavLink to="/">Profil</NavLink>  
-        <NavLink to="/">Réglage</NavLink>  
-        <NavLink to="/">Communauté</NavLink>  
+        <a href="/">Accueil</a>  
+        <a href="/">Profil</a>  
+        <a href="/">Réglage</a>  
+        <a href="/">Communauté</a> 
       </ul>
     </nav>
     

@@ -52,9 +52,10 @@ function ActivitiesChart() {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="50%">
-      <span className="barchart-label">Activités moyennes</span>
+    <ResponsiveContainer className="activities-chart-container">
+      <span className="activities-chart-label">Activités moyennes</span>
       <BarChart
+      className="activities-barchart"
         width="80%"
         height="100%"
         data={activitiesData}
