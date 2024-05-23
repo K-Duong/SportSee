@@ -8,15 +8,20 @@ import { PieChart, ResponsiveContainer, Pie, Cell, Label } from "recharts";
 
 function ScoreChart() {
   const user = useContext(UserContext);
-  const score = user.mainData.score;
-  // console.log(score);
+  const score = () => {
+    if(user.mainData.todayScore) {
+      return user.mainData.todayScore
+    } else {
+      return user.mainData.score
+    }
+  };
 
   const data = [
-    { name: "Total", value: 1 },
-    { name: "Score", value: score },
+    { name: "total", value: 1 },
+    { name: "score", value: score() },
   ];
 
-  function ChartLabel(props) {
+  function ChartLabel() {
     return (
       <foreignObject width={95} height={95}   
       className="score-chart-title">

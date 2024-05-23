@@ -16,7 +16,7 @@ import "./style.scss";
 
 function ActivitiesChart() {
   const user = useContext(UserContext);
-  const activities = user.activities;
+  const activities = user.activities.sessions;
 
   const getDay = (dayString) => {
     const day = new Date(dayString);
