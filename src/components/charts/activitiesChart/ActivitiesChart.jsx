@@ -10,7 +10,7 @@ import {
 } from "recharts";
 
 import { useContext } from "react";
-import UserContext from "../../../store/UserContext";
+import UserContext from "../../../context/UserContext";
 
 import "./style.scss";
 
@@ -30,10 +30,10 @@ function ActivitiesChart() {
       day: getDay(a.day),
     };
   });
-  // console.log(activitiesData);
+  console.log("activity", activitiesData);
 
   //customize tooltip:
-  const CustomTooltip = ({payload}) => {
+  const CustomTooltip = ({ payload }) => {
     return (
       <div className="custom-tooltip">
         {payload.map((p) =>
@@ -55,7 +55,7 @@ function ActivitiesChart() {
     <ResponsiveContainer className="activities-chart-container">
       <span className="activities-chart-label">Activités moyennes</span>
       <BarChart
-      className="activities-barchart"
+        className="activities-barchart"
         width="80%"
         height="100%"
         data={activitiesData}
@@ -64,7 +64,25 @@ function ActivitiesChart() {
       >
         <CartesianGrid vertical={false} strokeDasharray="3 3" />
         <XAxis dataKey="day" />
-        <YAxis orientation="right" />
+        <YAxis
+          type="number"
+          yAxisId="calories"
+          dataKey="calories"
+          orientation="left"
+          tickCount={3}
+          domain = {[0, "auto"]}
+
+          hide="true"
+        />
+        <YAxis
+          type="number"
+          yAxisId="kilogram"
+          dataKey="kilogram"
+          orientation="right"
+          tickCount={3}
+          domain = {["dataMin-5", "auto"]}
+        />
+
         <Tooltip content={<CustomTooltip />} />
         <Legend
           formatter={(value) => <span className="legend-text">{value}</span>}
@@ -76,6 +94,7 @@ function ActivitiesChart() {
           wrapperStyle={{ right: 10 }}
         />
         <Bar
+          yAxisId="kilogram"
           name="Poids (kg)"
           dataKey="kilogram"
           maxBarSize={15}
@@ -83,6 +102,7 @@ function ActivitiesChart() {
           radius={[50, 50, 0, 0]}
         />
         <Bar
+          yAxisId="calories"
           name="Calories brûlées (kCal)"
           dataKey="calories"
           maxBarSize={15}

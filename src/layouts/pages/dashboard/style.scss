@@ -3,8 +3,8 @@
 .dashboard-container {
   @include flex-column;
   row-gap: $s-50;
-  padding-bottom: $s-25;
-  padding-right: $s-25;
+  padding: 25px 50px;
+  flex-grow: 1;
   
 
   .dashboard-header {

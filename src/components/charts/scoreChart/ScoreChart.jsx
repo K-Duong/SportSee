@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import UserContext from "../../../store/UserContext";
+import UserContext from "../../../context/UserContext";
 
 import "./style.scss";
 import { PieChart, ResponsiveContainer, Pie, Cell, Label } from "recharts";
@@ -18,6 +18,7 @@ function ScoreChart() {
 
   const data = [
     { name: "total", value: 1 },
+    // {name: "test", value: 0.5},
     { name: "score", value: score() },
   ];
 
@@ -60,7 +61,7 @@ function ScoreChart() {
         nameKey="score"
         innerRadius={80}
         outerRadius={100}
-        startAngle={-270}
+        startAngle={-180}
         cornerRadius={100}
       >
         {data.map((entry, index) => {

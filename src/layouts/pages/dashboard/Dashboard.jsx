@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import UserContext from "../../../store/UserContext.jsx";
+import UserContext from "../../../context/UserContext.jsx";
 
 import Value from "../../../components/valueConsumption/ValueConsumption.jsx";
 import ChartsContainer from "../../chartsContainer/ChartsContainer.jsx";
@@ -10,7 +10,7 @@ import { userId } from "../../../config/config.jsx";
 import "./style.scss";
 
 function Dashboard() {
-  const id = userId[1];
+  const id = userId[0];
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
