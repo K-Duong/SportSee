@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import UserContext from "../../../context/UserContext";
 
 import {
@@ -15,6 +15,8 @@ import "./style.scss";
 function AverageChart() {
   const {user} = useContext(UserContext);
   const averageSession = user.averageSession.sessions;
+  const [zoneData, setzoneData] = useState({})
+
 
   const daysOfWeek = ["L", "M", "M", "J", "V", "S", "D"];
   const convertDay = (index) => daysOfWeek[index - 1];
@@ -25,7 +27,6 @@ function AverageChart() {
   // console.log("new data: ", data);
 
   function CustomizedTick(props) {
-    // console.log(props);
     const { x, y, payload } = props;
     return (
       <text x={x} y={y} dy={10} fill={"white"} fontSize={15}>
@@ -42,7 +43,9 @@ function AverageChart() {
     );
   }
 
-  function CustomizedTooltip({ active, payload }) {
+  function CustomizedTooltip(props) {
+    const { active, payload } = props;
+    console.log("props:", props)
     if (active) {
       const sessionLength = payload[0].payload.sessionLength;
       return <div className="tooltip-content">{`${sessionLength} min`}</div>;
@@ -82,6 +85,12 @@ function AverageChart() {
       style={{
         backgroundColor: "#FF0101",
       }}
+      onMouseMove={(data) => {
+        
+        if(!data.isTooltipActive) {return}; 
+        console.log("data:", data);
+        setzoneData(data.activeCoordinate)
+      }}
     >
       <XAxis
         dataKey="day"
@@ -102,6 +111,7 @@ function AverageChart() {
         strokeWidth={2}
         dot={false}
         activeDot={<CustomizedActiveDot />}
+        isAnimationActive="true"
       />
       <Tooltip
         content={<CustomizedTooltip />}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BarChart,
   CartesianGrid,
@@ -17,6 +18,7 @@ import "./style.scss";
 function ActivitiesChart() {
   const {user} = useContext(UserContext);
   const activities = user.activities.sessions;
+  const [barGraphData, setBarGraphData] = useState({})
 
   const getDay = (dayString) => {
     const day = new Date(dayString);
@@ -30,12 +32,12 @@ function ActivitiesChart() {
       day: getDay(a.day),
     };
   });
-  console.log("activity", activitiesData);
 
-  //customize tooltip:
-  const CustomTooltip = ({ payload }) => {
+  //customize tooltip
+  const CustomTooltip = (props ) => {
+    const {payload, viewBox} = props;
     return (
-      <div className="custom-tooltip">
+      <div className="custom-tooltip" >
         {payload.map((p) =>
           p.dataKey === "kilogram" ? (
             <p key={p.dataKey} className="weight-value">
@@ -61,6 +63,11 @@ function ActivitiesChart() {
         data={activitiesData}
         barCategoryGap={40}
         barGap={8}
+        onMouseHover={(data) => {
+          console.log("data:", data);
+          if(Object.keys(data).length === 0) {return}; 
+          setBarGraphData(data.activeCoordinate)
+        }}
       >
         <CartesianGrid vertical={false} strokeDasharray="3 3" />
         <XAxis dataKey="day" />
@@ -83,7 +90,11 @@ function ActivitiesChart() {
           domain = {["dataMin-5", "auto"]}
         />
 
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip 
+        content={<CustomTooltip />} 
+        allowEscapeViewBox={{x: true, y: true}}
+        position={{x: barGraphData.x, y: 12}}
+        />
         <Legend
           formatter={(value) => <span className="legend-text">{value}</span>}
           iconType="circle"
