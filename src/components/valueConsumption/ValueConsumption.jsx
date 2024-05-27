@@ -10,7 +10,6 @@ function Value({ arr }) {
   const [description, setDescription] = useState({});
 
   const [type, number] = arr;
-  // console.log(type, number);
 
   useEffect(() => {
     if (type === "calorieCount") {

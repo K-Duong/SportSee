@@ -5,15 +5,13 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Radar,
-  Legend,
 } from "recharts";
 
 import "./style.scss";
 
 function PerformanceChart() {
-  const user = useContext(UserContext);
+  const {user} = useContext(UserContext);
   const performance = user.performanceInfos;
 
   const convertKind = (value) => {
@@ -44,10 +42,8 @@ function PerformanceChart() {
     };
   });
 
-  // console.log(data);
 
   function CustomizedTick(props) {
-    // console.log(props);
     const { payload, x, y, textAnchor } = props;
     return (
       <text x={x} y={y} textAnchor={textAnchor} className="performance-label">

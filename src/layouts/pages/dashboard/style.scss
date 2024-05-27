@@ -9,6 +9,7 @@
 
   .dashboard-header {
     h1 {
+      margin: 0;
       font-size: $h1;
       .user-name {
         color: $red;
@@ -34,15 +35,3 @@
   }
 }
 
-.error {
-  @include flex-column;
-  @include center-children;
-
-  .error-status {
-    font-size: 100px;
-    color: $primary-color;
-  }
-  .error-message {
-    font-size: 38px;
-  }
-}

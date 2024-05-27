@@ -7,14 +7,13 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer,
   Label,
 } from "recharts";
 
 import "./style.scss";
 
 function AverageChart() {
-  const user = useContext(UserContext);
+  const {user} = useContext(UserContext);
   const averageSession = user.averageSession.sessions;
 
   const daysOfWeek = ["L", "M", "M", "J", "V", "S", "D"];
@@ -44,7 +43,6 @@ function AverageChart() {
   }
 
   function CustomizedTooltip({ active, payload }) {
-    //use useState and useEffect ?
     if (active) {
       const sessionLength = payload[0].payload.sessionLength;
       return <div className="tooltip-content">{`${sessionLength} min`}</div>;
@@ -52,7 +50,6 @@ function AverageChart() {
   }
 
   function CustomizedActiveDot(props) {
-    // console.log(props);
     return (
       <svg>
         <circle
@@ -77,7 +74,6 @@ function AverageChart() {
     );
   }
   return (
-    // <ResponsiveContainer  width={250} height={250}>
     <LineChart
       className="average-chart"
       width={250}
@@ -112,7 +108,6 @@ function AverageChart() {
         wrapperStyle={{ outline: "none", padding: 0, margin: 0 }}
       />
     </LineChart>
-    // </ResponsiveContainer>
   );
 }
 

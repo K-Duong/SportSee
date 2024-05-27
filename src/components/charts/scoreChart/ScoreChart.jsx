@@ -4,10 +4,9 @@ import UserContext from "../../../context/UserContext";
 import "./style.scss";
 import { PieChart, ResponsiveContainer, Pie, Cell, Label } from "recharts";
 
-// TODO: bg color white for inner circle
 
 function ScoreChart() {
-  const user = useContext(UserContext);
+  const {user} = useContext(UserContext);
   const score = () => {
     if(user.mainData.todayScore) {
       return user.mainData.todayScore
@@ -18,7 +17,6 @@ function ScoreChart() {
 
   const data = [
     { name: "total", value: 1 },
-    // {name: "test", value: 0.5},
     { name: "score", value: score() },
   ];
 
@@ -49,7 +47,6 @@ function ScoreChart() {
   }
 
   return (
-    // <ResponsiveContainer >
     <PieChart width={250} height={250} 
     className="score-chart"
       >
@@ -81,11 +78,8 @@ function ScoreChart() {
           return <Cell className="inner-circle" key={`cell-${index}`} />
         })} 
         <Label content={<CustomizedLabel />} />
-
         </Pie>
-
     </PieChart>
-    // </ResponsiveContainer>
   );
 }
 

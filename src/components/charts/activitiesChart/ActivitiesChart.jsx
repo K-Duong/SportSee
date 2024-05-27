@@ -15,7 +15,7 @@ import UserContext from "../../../context/UserContext";
 import "./style.scss";
 
 function ActivitiesChart() {
-  const user = useContext(UserContext);
+  const {user} = useContext(UserContext);
   const activities = user.activities.sessions;
 
   const getDay = (dayString) => {
