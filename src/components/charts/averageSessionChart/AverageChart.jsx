@@ -8,15 +8,15 @@ import {
   YAxis,
   Tooltip,
   Label,
+  Rectangle,
 } from "recharts";
 
 import "./style.scss";
 
 function AverageChart() {
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const averageSession = user.averageSession.sessions;
-  const [zoneData, setzoneData] = useState({})
-
+  const [yCursor, setYCursor] = useState({});
 
   const daysOfWeek = ["L", "M", "M", "J", "V", "S", "D"];
   const convertDay = (index) => daysOfWeek[index - 1];
@@ -24,7 +24,6 @@ function AverageChart() {
     ...obj,
     day: convertDay(obj.day),
   }));
-  // console.log("new data: ", data);
 
   function CustomizedTick(props) {
     const { x, y, payload } = props;
@@ -45,7 +44,6 @@ function AverageChart() {
 
   function CustomizedTooltip(props) {
     const { active, payload } = props;
-    console.log("props:", props)
     if (active) {
       const sessionLength = payload[0].payload.sessionLength;
       return <div className="tooltip-content">{`${sessionLength} min`}</div>;
@@ -76,6 +74,23 @@ function AverageChart() {
       </svg>
     );
   }
+
+  function CustomizedCursor(props) {
+    console.log("props:", props);
+    const { points, width, height } = props;
+    const { x, y } = points[0];
+    // const {x1, y1} = points[1]
+    return (
+      <Rectangle
+        fill="black"
+        opacity={"15%"}
+        x={x}
+        y={y}
+        width={width}
+        height={height + 20}
+      />
+    );
+  }
   return (
     <LineChart
       className="average-chart"
@@ -84,12 +99,6 @@ function AverageChart() {
       data={data}
       style={{
         backgroundColor: "#FF0101",
-      }}
-      onMouseMove={(data) => {
-        
-        if(!data.isTooltipActive) {return}; 
-        console.log("data:", data);
-        setzoneData(data.activeCoordinate)
       }}
     >
       <XAxis
@@ -115,6 +124,7 @@ function AverageChart() {
       />
       <Tooltip
         content={<CustomizedTooltip />}
+        cursor={<CustomizedCursor />}
         wrapperStyle={{ outline: "none", padding: 0, margin: 0 }}
       />
     </LineChart>
