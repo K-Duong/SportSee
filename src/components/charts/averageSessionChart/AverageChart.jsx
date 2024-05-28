@@ -76,7 +76,7 @@ function AverageChart() {
   }
 
   function CustomizedCursor(props) {
-    console.log("props:", props);
+    // console.log("props:", props);
     const { points, width, height } = props;
     const { x, y } = points[0];
     // const {x1, y1} = points[1]
