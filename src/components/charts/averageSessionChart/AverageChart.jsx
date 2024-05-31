@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import UserContext from "../../../context/UserContext";
 
 import {
@@ -16,7 +16,6 @@ import "./style.scss";
 function AverageChart() {
   const { user } = useContext(UserContext);
   const averageSession = user.averageSession.sessions;
-  const [yCursor, setYCursor] = useState({});
 
   const daysOfWeek = ["L", "M", "M", "J", "V", "S", "D"];
   const convertDay = (index) => daysOfWeek[index - 1];
@@ -79,7 +78,6 @@ function AverageChart() {
     // console.log("props:", props);
     const { points, width, height } = props;
     const { x, y } = points[0];
-    // const {x1, y1} = points[1]
     return (
       <Rectangle
         fill="black"
@@ -87,6 +85,7 @@ function AverageChart() {
         x={x}
         y={y}
         width={width}
+        // TODO: linechart dans responsive container 
         height={height + 20}
       />
     );

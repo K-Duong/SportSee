@@ -34,8 +34,8 @@ function ActivitiesChart() {
   });
 
   //customize tooltip
-  const CustomTooltip = (props ) => {
-    const {payload, viewBox} = props;
+  const CustomTooltip = (props) => {
+    const {payload} = props;
     return (
       <div className="custom-tooltip" >
         {payload.map((p) =>
@@ -78,7 +78,6 @@ function ActivitiesChart() {
           orientation="left"
           tickCount={3}
           domain = {[0, "auto"]}
-
           hide="true"
         />
         <YAxis

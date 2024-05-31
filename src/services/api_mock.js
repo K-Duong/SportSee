@@ -1,6 +1,6 @@
 //mock data for testing
 
-export const USER_MAIN_DATA = [
+const USER_MAIN_DATA = [
     {
         id: 12,
         userInfos: {
@@ -34,7 +34,7 @@ export const USER_MAIN_DATA = [
     }
 ]
 
-export const USER_ACTIVITY = [
+const USER_ACTIVITY = [
     {
         userId: 12,
         sessions: [
@@ -118,7 +118,7 @@ export const USER_ACTIVITY = [
 ]
 
 
-export const USER_AVERAGE_SESSIONS = [
+const USER_AVERAGE_SESSIONS = [
     {
         userId: 12,
         sessions: [
@@ -188,7 +188,7 @@ export const USER_AVERAGE_SESSIONS = [
 ]
 
 
-export const USER_PERFORMANCE = [
+const USER_PERFORMANCE = [
     {
         userId: 12,
         kind: {
@@ -265,9 +265,19 @@ export const USER_PERFORMANCE = [
     }
 ]
 
-// export const data = {
-//     USER_MAIN_DATA,
-//     USER_ACTIVITY,
-//     USER_AVERAGE_SESSIONS,
-//     USER_PERFORMANCE
-// }
+
+export const getUserInfos = async (id) => {
+    return USER_MAIN_DATA.find(d => d.id === id)
+  }
+
+export const getUserActivity = async (id) => {
+    return USER_ACTIVITY.find(d=>d.userId === id)
+  };
+  
+export const getUserPerform = async (id) => {
+    return USER_PERFORMANCE.find(d=>d.userId === id)
+  };
+export const getUserAverageSession = async (id) => {
+    return USER_AVERAGE_SESSIONS.find(d => d.userId === id);
+  };
+  
