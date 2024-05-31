@@ -14,7 +14,7 @@ function UserProvider({ children }) {
 
   const fetchApi = async () => {
     try {
-      const mainData = await getData(`http://localhost:3000/user/${id}f`);
+      const mainData = await getData(`http://localhost:3000/user/${id}`);
       const activities = await getData(
         `http://localhost:3000/user/${id}/activity`
       );
@@ -50,6 +50,7 @@ function UserProvider({ children }) {
   useEffect(() => {
     let ignore = false;
     setUser(null);
+    setError(null)
 
     if (!ignore) {
       fetchApi();
