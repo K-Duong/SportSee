@@ -1,0 +1,17 @@
+@use "../../styles" as *;
+
+///// For loading icon
+.loading-content {
+  @include flex-column;
+  @include center-children;
+  flex-grow: 1;
+
+  row-gap: $s-50;
+
+  span{
+    font-size: $error-text;
+    font-weight: $bold-text;
+
+  };
+
+}

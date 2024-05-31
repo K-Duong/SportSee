@@ -1,9 +1,9 @@
 import UserContext from "./UserContext";
+
+import ErrorContent from "../components/error/errorContent";
+import LoadingContent from "../components/loading/loadingContent";
 import { useState, useEffect } from "react";
 import { getData } from "../services/api";
-import loadingIcon from "../assets/Spinne.gif";
-
-import "./style.scss";
 
 function UserProvider({ children }) {
   //id for testing : 12 or 18
@@ -14,7 +14,7 @@ function UserProvider({ children }) {
 
   const fetchApi = async () => {
     try {
-      const mainData = await getData(`http://localhost:3000/user/${id}`);
+      const mainData = await getData(`http://localhost:3000/user/${id}f`);
       const activities = await getData(
         `http://localhost:3000/user/${id}/activity`
       );
@@ -60,33 +60,11 @@ function UserProvider({ children }) {
     };
   }, []);
 
-  function ErrorContent() {
-    return (
-      <div className="error-content">
-        <h1 className="error-status">
-          <span>{error.status}</span>{" "}
-        </h1>
-        <h2 className="error-message">
-          <span>{error.message}</span>
-        </h2>
-      </div>
-    );
-  }
-  function LoadingContent() {
-    return (
-      <div className="loading-content">
-        <img src={loadingIcon} />
-        <span>is loading...</span> 
-        </div>
-    );
-  }
-  // console.log("UserProvider:", user);
-  // console.log("loading:", loading);
-  // console.log("error:", error);
   return (
     <UserContext.Provider value={{ user }}>
+
       {loading && <LoadingContent />}
-      {error && <ErrorContent />}
+      {error && <ErrorContent error={error}/>}
       {user && children}
     </UserContext.Provider>
   );

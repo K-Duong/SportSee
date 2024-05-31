@@ -3,7 +3,6 @@
 aside {
   @include flex-column;
   align-items: center;
-  
   background-color: $border-color;
   // height: 100%;
   width: 8%;
@@ -14,7 +13,8 @@ aside {
     flex-grow: 1;
     justify-content: center;
     img{
-      padding: $s-20;
+      padding: $s-15;
+      width: 64px;
     }
     
     }
@@ -23,6 +23,7 @@ aside {
     color: $white-color;
     writing-mode: tb;
     transform: rotate(180deg);
+    font-size: $p;
 
     
   }

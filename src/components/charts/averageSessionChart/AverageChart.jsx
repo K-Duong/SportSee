@@ -120,7 +120,6 @@ function AverageChart() {
         strokeWidth={2}
         dot={false}
         activeDot={<CustomizedActiveDot />}
-        isAnimationActive="true"
       />
       <Tooltip
         content={<CustomizedTooltip />}
