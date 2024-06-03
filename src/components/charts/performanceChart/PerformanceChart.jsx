@@ -58,8 +58,10 @@ function PerformanceChart() {
       outerRadius={85}
       width={250}
       height={250}
-      startAngle={90}
+      startAngle={30}
+      endAngle={-330}
       data={data}
+     
     >
       <PolarGrid />
       <PolarAngleAxis dataKey="kind" tick={<CustomizedTick />} />

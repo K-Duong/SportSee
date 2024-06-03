@@ -16,9 +16,9 @@ import UserContext from "../../../context/UserContext";
 import "./style.scss";
 
 function ActivitiesChart() {
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const activities = user.activities.sessions;
-  const [barGraphData, setBarGraphData] = useState({})
+  const [barGraphData, setBarGraphData] = useState({});
 
   const getDay = (dayString) => {
     const day = new Date(dayString);
@@ -35,9 +35,9 @@ function ActivitiesChart() {
 
   //customize tooltip
   const CustomTooltip = (props) => {
-    const {payload} = props;
+    const { payload } = props;
     return (
-      <div className="custom-tooltip" >
+      <div className="custom-tooltip">
         {payload.map((p) =>
           p.dataKey === "kilogram" ? (
             <p key={p.dataKey} className="weight-value">
@@ -54,45 +54,52 @@ function ActivitiesChart() {
   };
 
   return (
-    <ResponsiveContainer className="activities-chart-container">
+    <ResponsiveContainer className="activities-chart-container" width={"100%" } height={"50%"}>
       <span className="activities-chart-label">Activités moyennes</span>
       <BarChart
         className="activities-barchart"
-        width="80%"
-        height="100%"
         data={activitiesData}
-        barCategoryGap={40}
+        barCategoryGap={50}
         barGap={8}
         onMouseHover={(data) => {
-          console.log("data:", data);
-          if(Object.keys(data).length === 0) {return}; 
-          setBarGraphData(data.activeCoordinate)
+          if (Object.keys(data).length === 0) {
+            return;
+          }
+          setBarGraphData(data.activeCoordinate);
         }}
       >
         <CartesianGrid vertical={false} strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis
+        <XAxis 
+        dataKey="day" 
+        tickLine={false} 
+        tickMargin={15}
+        />
+
+       <YAxis
           type="number"
           yAxisId="calories"
           dataKey="calories"
           orientation="left"
           tickCount={3}
-          domain = {[0, "auto"]}
-          hide="true"
+          domain={["auto", "dataMax+50"]}
+          hide
         />
         <YAxis
+          axisLine={false}
+          tickLine={false}
           type="number"
           yAxisId="kilogram"
           dataKey="kilogram"
           orientation="right"
           tickCount={3}
-          domain = {["dataMin-5", "auto"]}
+          domain={["dataMin-5", "auto"]}
         />
 
-        <Tooltip 
-        content={<CustomTooltip />} 
-        allowEscapeViewBox={{x: true, y: true}}
-        position={{x: barGraphData.x, y: 12}}
+        <Tooltip
+          content={<CustomTooltip />}
+          position={{ x: barGraphData.x, y: 12 }}
+          wrapperStyle={{padding: "10px"}}
+        
         />
         <Legend
           formatter={(value) => <span className="legend-text">{value}</span>}
@@ -101,7 +108,8 @@ function ActivitiesChart() {
           iconSize={10}
           width={300}
           height={70}
-          wrapperStyle={{ right: 10 }}
+          wrapperStyle={{ top: 32, right: 10 }}
+          margin={{bottom: 25}}
         />
         <Bar
           yAxisId="kilogram"

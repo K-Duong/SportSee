@@ -1,13 +1,13 @@
 @use "../../../styles/index.scss" as *;
 .recharts-wrapper.average-chart {
   border-radius: $round-border-chart;
-  padding: $s-15;
 }
 
 .label-wrapper {
   .average-chart-label {
     font-size: $label-chart ;
     color: $white-color;
+    padding: $s-15;
   }
 }
 

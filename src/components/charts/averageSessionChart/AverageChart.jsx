@@ -9,6 +9,7 @@ import {
   Tooltip,
   Label,
   Rectangle,
+  ResponsiveContainer,
 } from "recharts";
 
 import "./style.scss";
@@ -35,7 +36,7 @@ function AverageChart() {
 
   function CustomizedLabel() {
     return (
-      <foreignObject className="label-wrapper" width={150} height={95}>
+      <foreignObject className="label-wrapper" width={150} height={95} >
         <div className="average-chart-label">Durée moyenne des sessions</div>
       </foreignObject>
     );
@@ -76,21 +77,21 @@ function AverageChart() {
 
   function CustomizedCursor(props) {
     // console.log("props:", props);
-    const { points, width, height } = props;
-    const { x, y } = points[0];
+    const { points, width } = props;
+    const { x } = points[0];
     return (
       <Rectangle
         fill="black"
         opacity={"15%"}
         x={x}
-        y={y}
+        y={0}
         width={width}
-        // TODO: linechart dans responsive container 
-        height={height + 20}
+        height={250}
       />
     );
   }
   return (
+ 
     <LineChart
       className="average-chart"
       width={250}
@@ -98,6 +99,12 @@ function AverageChart() {
       data={data}
       style={{
         backgroundColor: "#FF0101",
+      }}
+      margin={{
+        top: 50,
+        right: 20,
+        left: 20,
+        bottom: 20,
       }}
     >
       <XAxis
@@ -110,7 +117,11 @@ function AverageChart() {
       >
         <Label content={<CustomizedLabel />} />
       </XAxis>
-      <YAxis dataKey={"sessionLength"} padding={{ top: 100 }} hide={"true"} />
+      <YAxis 
+      dataKey={"sessionLength"} 
+      domain={['dataMin-10', 'dataMax+10']}
+      hide={"true"} 
+      />
 
       <Line
         type="natural"
@@ -122,10 +133,11 @@ function AverageChart() {
       />
       <Tooltip
         content={<CustomizedTooltip />}
-        cursor={<CustomizedCursor />}
-        wrapperStyle={{ outline: "none", padding: 0, margin: 0 }}
+        cursor={<CustomizedCursor 
+          />}
       />
     </LineChart>
+
   );
 }
 

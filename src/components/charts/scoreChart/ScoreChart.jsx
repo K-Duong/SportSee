@@ -24,7 +24,7 @@ function ScoreChart() {
     return (
       <foreignObject width={95} height={95}   
       className="score-chart-title">
-        <span className="title">Score</span>
+        <div className="title">Score</div>
       </foreignObject>
     );
   }

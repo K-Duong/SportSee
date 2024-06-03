@@ -3,7 +3,7 @@
 .recharts-wrapper.score-chart {
   background-color: $bg-color;
   border-radius: $round-border-chart;
-  padding: $s-15;
+  // padding: $s-15;
 }
 
 .label-wrapper {
@@ -29,6 +29,7 @@
     font-size: $label-chart;
     color: $label-color;
     font-weight: $bold-text;
+    padding: $s-15;
   }
 }
 
