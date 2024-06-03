@@ -7,17 +7,17 @@ import { PieChart, ResponsiveContainer, Pie, Cell, Label } from "recharts";
 
 function ScoreChart() {
   const {user} = useContext(UserContext);
-  const score = () => {
+  const score = (() => {
     if(user.mainData.todayScore) {
-      return user.mainData.todayScore
+      return user.mainData.todayScore;
     } else {
-      return user.mainData.score
+      return user.mainData.score;
     }
-  };
+  })();
 
   const data = [
-    { name: "total", value: 1 },
-    { name: "score", value: score() },
+    { name: "total", value: 1 - score },
+    { name: "score", value: score },
   ];
 
   function ChartLabel() {
@@ -58,7 +58,8 @@ function ScoreChart() {
         nameKey="score"
         innerRadius={80}
         outerRadius={100}
-        startAngle={-180}
+        startAngle={450}
+        endAngle={90}
         cornerRadius={100}
       >
         {data.map((entry, index) => {
