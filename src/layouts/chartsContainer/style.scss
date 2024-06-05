@@ -1,7 +1,7 @@
 @use "../../styles/index.scss" as *;
 
 .charts{
-  width: 72%;
+  width: 65%;
   @include flex-column;
   row-gap: $s-25;
 }

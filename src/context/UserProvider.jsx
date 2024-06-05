@@ -39,7 +39,7 @@ function UserProvider({ children }) {
         setUser(null)
         setError(() => {
           return {
-            status: err.response.status,
+            status: err.response ? err.response.status : null,
             message: "Oops, une erreur est survenue 🫨. Réessayez plus tard !",
           };
         });
@@ -47,7 +47,6 @@ function UserProvider({ children }) {
         setLoading(false);
       }
     };
-    // console.log("mounted")
     fetchApi();
   }, [setUser])
 

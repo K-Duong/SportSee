@@ -1,7 +1,6 @@
 
-
-import Nav from "../navbar/Navbar";
-import VerticalMenu from "../verticalMenu/VerticalMenu";
+import Nav from "../Navbar/Navbar";
+import VerticalMenu from "../VerticalMenu/VerticalMenu";
 import "./style.scss"
 
 function Container({children}) {

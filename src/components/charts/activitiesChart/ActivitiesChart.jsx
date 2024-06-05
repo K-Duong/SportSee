@@ -59,8 +59,8 @@ function ActivitiesChart() {
       <BarChart
         className="activities-barchart"
         data={activitiesData}
-        barCategoryGap={50}
-        barGap={8}
+        barCategoryGap={30}
+        barGap={2}
         onMouseHover={(data) => {
           if (Object.keys(data).length === 0) {
             return;
@@ -81,7 +81,7 @@ function ActivitiesChart() {
           dataKey="calories"
           orientation="left"
           tickCount={3}
-          domain={["auto", "dataMax+50"]}
+          domain={[0, "dataMax + 50"]}
           hide
         />
         <YAxis
