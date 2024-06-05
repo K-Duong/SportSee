@@ -59,8 +59,8 @@ function ActivitiesChart() {
       <BarChart
         className="activities-barchart"
         data={activitiesData}
-        barCategoryGap={30}
-        barGap={2}
+        barCategoryGap={26}
+        barGap={6}
         onMouseHover={(data) => {
           if (Object.keys(data).length === 0) {
             return;
