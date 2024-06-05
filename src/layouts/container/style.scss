@@ -21,7 +21,6 @@ body{
     
     .main-container{
       @include flex-column;
-      // @include center-children;
       flex-grow: 1;
       width: 90%;
       height: 100%;
